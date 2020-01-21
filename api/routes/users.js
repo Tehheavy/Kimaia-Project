@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
+const Stat = require('../models/stat')
+const Logger = require('../middleware/log')
 
 
 router.post('/signup',(req,res,next)=>{
@@ -31,7 +33,7 @@ router.post('/signup',(req,res,next)=>{
                         user.save().then(result=>{
                             console.log(result);
                             res.status(201).json({
-                                message:'Uesr Created'
+                                message:'User Created'
                             })
                         }).catch(err=>{
                             console.log(err);
@@ -46,20 +48,6 @@ router.post('/signup',(req,res,next)=>{
         }
     }).catch();
     console.log(req.body.email);
-});
-
-router.delete('/:userId',(req,res,next)=>{
-    console.log("AOUISDHIUASHDIUASHDIUAHSDIUH")
-    User.deleteOne({_id:req.params.userId}).exec().then(result=>{
-        res.status(200).json({
-            message:"user deleted"
-        });
-    }).catch(err=>{
-        console.log(err);
-        res.status(500).json({
-            error:err
-        })
-    })
 });
 
 router.post('/login',(req,res,next)=>{
@@ -80,6 +68,7 @@ router.post('/login',(req,res,next)=>{
                     },process.env.JWT_KEY,{
                         expiresIn:"1h"
                     })
+                    Logger.logLogin(req.body.email);
                     return res.status(200).json({
                         message:'Auth successful',
                         token:token

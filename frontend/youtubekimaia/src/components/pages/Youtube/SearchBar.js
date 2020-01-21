@@ -1,20 +1,35 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Form from "react-bootstrap/Form";
+import { Button } from "react-bootstrap";
+import "./SearchBar.css";
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 function SearchBar(props) {
+
+   const handleKeyPress=(e)=>{
+        if(e.charCode==13){
+            e.preventDefault();
+            props.handlePress();   
+        } 
+      }
+      const handleMousePress=(e)=>{
+          props.handlePress();
+      }
   return (
-    <div>
+    <div className="SearchBar">
       <Form>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Search</Form.Label>
-          <Form.Control type="text"/>
-          <Form.Text className="text-muted">
-            Search for your videos here
-          </Form.Text>
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+        <Row>
+          <Col>
+            <Form.Control placeholder="Search here" onChange={e => props.handleInput(e)} onKeyPress={e=>{handleKeyPress(e)}}/>
+          </Col>
+          <Col>
+            <Button variant="dark" type="button" onClick={e => handleMousePress(e)}>
+              Submit
+            </Button>
+          </Col>
+        </Row>
       </Form>
     </div>
   );

@@ -52,5 +52,8 @@ class Auth {
     Authenticate(){
 
     }
+    GetEmail(){
+        return this.email;
+    }
 }
 export default new Auth();
