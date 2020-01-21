@@ -1,17 +1,47 @@
 .VideoListItem{
     border-style: ridge;
-    width: 100%;
+    width:100%;
     height:15vh;
     display:flex;
-    flex-direction: row;
+    box-sizing:border-box;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.VideoListItemImage{
+    margin:auto;
+    float:left;
+}
+.VideoData{
+    margin:auto;
+    width: 100%;
+    box-sizing:border-box;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
-.VideoData{
+.Split{
     display:flex;
-    flex-direction: column;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    justify-content: space-between;
+    width: 70%;
+}
+.PlayButton{
+    width:50%;
+}
+.PlayButton>img{
+    width:80%;
+    min-width: 100px;
+    margin-left: 1rem;
+    margin-top: 30%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height:40%;
+}
+.testin{
+    background-color: chocolate;
+    
 }

@@ -11,12 +11,11 @@ import Col from 'react-bootstrap/Col'
 function VideoList(props) {
   if(props.List.length>0)
   {
-    console.log("test"+props.List[0].id.videoId)
       const content = props.List.map(id => {
+        console.log(id.id)
     return (
-      <div key={id.id.videoId}>
-          <VideoListItem data={id}></VideoListItem>
-      </div>
+          <VideoListItem key={id.id} data={id} handleVideoListClick={props.handleVideoListClick}></VideoListItem>
+
     );
   });
   return content

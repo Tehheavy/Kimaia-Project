@@ -6,6 +6,7 @@ const statSchema = mongoose.Schema({
     action:{type:String,required:true},
     searchTitle:{type:String,required:false},
     video:{type:String,required:false},
+    videoTime:{type:String,required:false},
     time:{type:String,required:true}
 });
 

@@ -53,7 +53,25 @@ const Stat = require ('../models/stat')
         }
 
     }
+    async function logUserlog(email,action,videoId){
+        try{
+            const stat= new Stat({
+                _id: mongoose.Types.ObjectId(),
+                email:email,
+                video: videoId,
+                action: action,
+                time:Date()
+            });
+            await stat.save();
+            console.log("logged Select")
+        }
+        catch(err){
+            console.log(err)
+        }
+
+    }
   
     module.exports.logLogin=logLogin;
     module.exports.logSignup=logSignup;
     module.exports.logSearch=logSearch;
+    module.exports.logUserlog=logUserlog;

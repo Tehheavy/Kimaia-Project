@@ -12,6 +12,7 @@ import Youtube from './pages/Youtube'
 import Stats from './pages/Stats'
 import Auth from './Auth'
 import Signup from './pages/Signup'
+import './App.css'
 
 console.log( Auth.isAuthenticated())
 const AuthenticatedRoute = ({component:Component,...rest})=>(
@@ -40,7 +41,7 @@ const ProtectedRoute = ({component:Component,...rest})=>(
 function App() {
   return (
     <Router>
-      <div>
+      <div className="App">
         <ul>
           <li><Link to='/login'>Login page</Link></li>
           <li><Link to='/stats'>Protected Page</Link></li>

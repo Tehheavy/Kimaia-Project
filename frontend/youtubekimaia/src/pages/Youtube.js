@@ -8,11 +8,21 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import VideoBar from '../components/pages/Youtube/VideoList'
+import YouTube from 'react-youtube';
+import './Youtube.css'
 
 
 function Youtube(props) {
   const [search, setSearch] = useState("");
   const [videos,setVideos] = useState([]);
+  const [targetVideo,setTargetVideo]=useState("43kQ-344AnQ")
+  const opts = {
+    height: '600px',
+    width: '100%',
+    playerVars: { // https://developers.google.com/youtube/player_parameters
+      autoplay: 0
+    }
+  };
   const temp=[
     {
         "kind": "youtube#video",
@@ -294,6 +304,12 @@ console.log(temp);
     console.log(event.target.value);
     setSearch(event.target.value);
   };
+  const handleVideoListClick = (value)=>{
+      setTargetVideo(value);
+      console.log({email:Auth.GetEmail(),action:'select',videoId:value});
+      let data={email:Auth.GetEmail(),action:'select',videoId:value};
+      ApiCalls.userLog(data);
+  }
   const handlePress = event => {
     console.log("enter clicked");
     let email = Auth.GetEmail();
@@ -308,10 +324,18 @@ console.log(temp);
         handleInput={handleInput}
         handlePress={handlePress}
       ></SearchBar>
-      <Container>
+      <Container style={{maxWidth:"90%"}}>
         <Row>
-          <Col md={4}><VideoBar List={temp}></VideoBar></Col>
-          <Col style={{background:"yellow"}} md={8}>sm=8</Col>
+          <Col  xs={{ span: 12, order: 2 }} md={{ span: 4, order: 1 }}><VideoBar handleVideoListClick={handleVideoListClick} List={temp}></VideoBar></Col>
+          <Col  xs={{ span: 12, order: 1 }} md={{ span: 8, order: 2 }}>
+              <div className="YoutubePlayer">
+                <YouTube
+                        videoId={targetVideo}
+                        opts={opts}
+                    />
+
+              </div>
+          </Col>
         </Row>
       </Container>
     </div>

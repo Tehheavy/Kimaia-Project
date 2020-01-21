@@ -84,4 +84,15 @@ router.post('/search',async (req,res,next)=>{
     //   });
 
 });
+
+
+router.post('/log',async (req,res,next)=>{
+  console.log(req.body.email)
+  console.log(req.body.action)
+  console.log(req.body.videoId)
+  console.log("loggger")
+
+  Logger.logUserlog(req.body.email,req.body.action,req.body.videoId);
+
+});
 module.exports=router;
