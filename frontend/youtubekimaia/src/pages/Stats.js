@@ -55,8 +55,6 @@ function Stats(props) {
       rows: response.data.data
     };
     setData(data)
-        console.log(response.data.data)
-        // ...
       }
       fetchData();
     }, []); // Or [] if effect doesn't need props or state

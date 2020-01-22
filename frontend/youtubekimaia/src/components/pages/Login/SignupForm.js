@@ -13,7 +13,6 @@ function SignupForm(props) {
   const [callBack, setCallBack] = useState([false, false]);
 
   const handleChangeEmail = event => {
-    console.log(email);
     setEmail(event.target.value);
   };
   const handleChangePassword = event => {
@@ -22,7 +21,6 @@ function SignupForm(props) {
   const handleClickSignUp = event => {
     event.preventDefault();
     let data = { email, password };
-    console.log(data);
     Auth.signup(data, setCallBack);
   };
   if (callBack[0] === false) {

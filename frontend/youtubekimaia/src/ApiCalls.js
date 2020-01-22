@@ -6,7 +6,6 @@ class ApiCalls {
     }
     async search(data,cb){
         try{
-            console.log(data)
             let response = await axios.post('/youtube/search',data)
             if(response.status===200)
             {
@@ -21,7 +20,6 @@ class ApiCalls {
     }
     async userSelectLog(data){ //email:email , action:action , videoId:videoId
         try{
-            console.log(data)
             let response = await axios.post('/youtube/selectlog',data)
             if(response.status===200)
             {
@@ -35,7 +33,6 @@ class ApiCalls {
     }
     async userYoutubePlayerLog(data){ //email,action,videoTime,videoId
         try{
-            console.log(data)
             let response = await axios.post('/youtube/playerlog',data)
             if(response.status===200)
             {

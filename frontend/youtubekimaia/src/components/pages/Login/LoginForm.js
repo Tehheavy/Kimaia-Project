@@ -13,7 +13,6 @@ function LoginForm(props) {
   const [callBack, setCallBack] = useState([false, false]);
 
   const handleChangeEmail = event => {
-    console.log(email);
     setEmail(event.target.value);
   };
   const handleChangePassword = event => {
@@ -22,7 +21,6 @@ function LoginForm(props) {
   const handleClickLogin = event => {
     event.preventDefault();
     let data = { email, password };
-    console.log(data);
     Auth.login(data, setCallBack);
   };
   if (callBack[0] === false) { //if login failed ,stay succeed and go back to main page

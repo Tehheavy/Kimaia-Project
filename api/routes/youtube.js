@@ -11,27 +11,7 @@ const Stat = require ('../models/stat')
 const Logger = require('../middleware/log')
 
 router.post('/search',async (req,res,next)=>{
-    console.log(req.body.title)
-    console.log(req.body.email)
     console.log("searching")
-    // let date=Date();
-    // console.log(date)
-    // try{
-    //     const stat= new Stat({
-    //         _id: mongoose.Types.ObjectId(),
-    //         email:req.body.email,
-    //         searchTitle: req.body.title,
-    //         action: "search",
-    //         time:date
-    //     });
-    //     await stat.save();
-    // }
-    // catch(err){
-    //     return res.status(500).json({error:err});
-    // }
-    // return res.status(200).json({
-    //     message:"hello"
-    // })
     Logger.logSearch(req.body.email,req.body.title);
     await youtube.search.list({
         part: 'snippet',
@@ -67,30 +47,13 @@ router.post('/search',async (req,res,next)=>{
         }
       });
 
-    //  await youtube.videos.list({
-    //     part:'statistics,snippet',
-    //     id: 'wAjN3_tJKo0,4yLyiYuRvdA',   
-    //   }, function (err, data) {
-    //     if (err) {
-    //       console.error('Error: ' + err);
-    //      return  res.status(404).json({
-    //           error:err
-    //       })
-    //     }
-    //     if (data) {
-    //       console.log(data)
-    //       return res.status(200).json(data);
-    //     }
-    //   });
+
 
 });
 
 
 router.post('/selectlog',async (req,res,next)=>{
-  console.log(req.body.email)
-  console.log(req.body.action)
-  console.log(req.body.videoId)
-  console.log("loggger")
+  console.log("selectlog")
   try{
     Logger.logUserlog(req.body.email,req.body.action,req.body.videoId);
   }catch(err){
@@ -101,10 +64,7 @@ router.post('/selectlog',async (req,res,next)=>{
 });
 
 router.post('/playerlog',async (req,res,next)=>{ //email,action,videoTime,videoId
-  console.log(req.body.email)
-  console.log(req.body.action)
-  console.log(req.body.videoId)
-  console.log("loggger")
+  console.log("playerlog")
   try{
     Logger.YoutubePlayerLog(req.body.email,req.body.action,req.body.videoTime,req.body.videoId);
   }catch(err){
