@@ -13,6 +13,7 @@ import Stats from './pages/Stats'
 import Auth from './Auth'
 import Signup from './pages/Signup'
 import './App.css'
+import Navbar from './components/navbar'
 
 console.log( Auth.isAuthenticated())
 const AuthenticatedRoute = ({component:Component,...rest})=>(
@@ -42,10 +43,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <ul>
-          <li><Link to='/login'>Login page</Link></li>
-          <li><Link to='/stats'>Protected Page</Link></li>
-        </ul> 
           <Route exact path='/signup' component={Signup}></Route>
           <UnAuthenticatedRoute exact path='/login' component={Login}></UnAuthenticatedRoute>
           <AuthenticatedRoute exact path='/' component={Youtube}/>

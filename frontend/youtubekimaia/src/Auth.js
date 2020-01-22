@@ -4,6 +4,7 @@ class Auth {
     constructor(){
         this.email=""
         this.authenticated=false;
+        this.admin=false;
         console.log(this.authenticated)
     }
     async login(data,cb){
@@ -12,6 +13,9 @@ class Auth {
             let response = await axios.post('/users/login',data)
             if(response.status===200)
             {
+                if(response.data.type==="admin"){
+                    console.log("IS ADMIN");
+                }
                 this.email=data.email;
                 this.authenticated=true;
                 console.log(response)

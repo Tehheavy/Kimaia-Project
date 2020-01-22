@@ -70,8 +70,27 @@ const Stat = require ('../models/stat')
         }
 
     }
+    async function YoutubePlayerLog(email,action,videoTime,videoId){//email,action,videoTime,videoId
+        try{
+            const stat= new Stat({
+                _id: mongoose.Types.ObjectId(),
+                email:email,
+                video: videoId,
+                videoTime:videoTime,
+                action: action,
+                time:Date()
+            });
+            await stat.save();
+            console.log("logged Select")
+        }
+        catch(err){
+            console.log(err)
+        }
+
+    }
   
     module.exports.logLogin=logLogin;
     module.exports.logSignup=logSignup;
     module.exports.logSearch=logSearch;
     module.exports.logUserlog=logUserlog;
+    module.exports.YoutubePlayerLog=YoutubePlayerLog;

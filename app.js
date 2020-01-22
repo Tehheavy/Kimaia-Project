@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 
 const userRoutes = require('./api/routes/users');
 const youtubeRoutes = require('./api/routes/youtube');
+const logRoutes = require('./api/routes/logs');
 const bodyParser = require('body-parser');
 
 
@@ -31,6 +32,7 @@ app.use((req,res,next)=>{
 
 app.use('/users',userRoutes)
 app.use('/youtube',youtubeRoutes)
+app.use('/log',logRoutes)
 
 app.use((req,res,next)=>{
     const error = new Error('Not found');

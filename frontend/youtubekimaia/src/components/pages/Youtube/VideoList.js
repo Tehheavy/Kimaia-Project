@@ -12,7 +12,6 @@ function VideoList(props) {
   if(props.List.length>0)
   {
       const content = props.List.map(id => {
-        console.log(id.id)
     return (
           <VideoListItem key={id.id} data={id} handleVideoListClick={props.handleVideoListClick}></VideoListItem>
 

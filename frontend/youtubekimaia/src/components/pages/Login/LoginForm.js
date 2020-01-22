@@ -25,7 +25,7 @@ function LoginForm(props) {
     console.log(data);
     Auth.login(data, setCallBack);
   };
-  if (callBack[0] === false) {
+  if (callBack[0] === false) { //if login failed ,stay succeed and go back to main page
     return (
       <Container>
         <Col>
@@ -44,9 +44,9 @@ function LoginForm(props) {
               />
               <strong className="mr-auto">Bootstrap</strong>
             </Toast.Header>
-            <Toast.Body>{"Error Logging up"}</Toast.Body>
+            <Toast.Body>{"Error Logging in"}</Toast.Body>
           </Toast>
-          <h3>Sign Up</h3>
+          <h3>Sign In</h3>
           <form>
             <DataForm
               handleClick={handleClickLogin}

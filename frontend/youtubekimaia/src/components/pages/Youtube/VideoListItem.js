@@ -9,7 +9,7 @@ import Play from "../../../images/playButton.png"
 
 
 function VideoListItem(props) {
-  console.log("Video Item" + props.data.id.videoId);
+
   return (
     <div className="VideoListItem" onClick={e => props.handleVideoListClick(props.data.id)}>
       <div className="VideoListItemImage">

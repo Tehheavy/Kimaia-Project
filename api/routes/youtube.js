@@ -86,13 +86,31 @@ router.post('/search',async (req,res,next)=>{
 });
 
 
-router.post('/log',async (req,res,next)=>{
+router.post('/selectlog',async (req,res,next)=>{
   console.log(req.body.email)
   console.log(req.body.action)
   console.log(req.body.videoId)
   console.log("loggger")
+  try{
+    Logger.logUserlog(req.body.email,req.body.action,req.body.videoId);
+  }catch(err){
+    return res.status(500).json({error:err})
+  }
+  return res.status(200).json({})
 
-  Logger.logUserlog(req.body.email,req.body.action,req.body.videoId);
+});
+
+router.post('/playerlog',async (req,res,next)=>{ //email,action,videoTime,videoId
+  console.log(req.body.email)
+  console.log(req.body.action)
+  console.log(req.body.videoId)
+  console.log("loggger")
+  try{
+    Logger.YoutubePlayerLog(req.body.email,req.body.action,req.body.videoTime,req.body.videoId);
+  }catch(err){
+    return res.status(500).json({error:err})
+  }
+  return res.status(200).json({})
 
 });
 module.exports=router;
