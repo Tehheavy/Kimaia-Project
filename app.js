@@ -29,10 +29,14 @@ app.use((req,res,next)=>{
     }  
     next();
 });
-
+app.use(express.static(path.join(__dirname, 'build')));
 app.use('/users',userRoutes)
 app.use('/youtube',youtubeRoutes)
 app.use('/log',logRoutes)
+
+app.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.use((req,res,next)=>{
     const error = new Error('Not found');
