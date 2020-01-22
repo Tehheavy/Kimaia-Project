@@ -9,7 +9,26 @@ import {
   import Auth from '../Auth'
 
 function Navbar(props) {
-    if(Auth.isAuthenticated()&&props.type==="admin"){
+    if(Auth.isAdmin()){
+        
+        return (
+          <div>
+            <ul>
+              <li>
+                <Link to="/login" onClick={e=>{Auth.logout()}}>Logout</Link>
+              </li>
+              <li>
+                <Link to="/stats">Statistics Page</Link>
+              </li>
+              <li>
+                <Link to="/">Home Page</Link>
+              </li>
+            </ul>
+          </div>
+        );
+    }
+    else
+    if(Auth.isAuthenticated()){
         
         return (
           <div>
@@ -24,21 +43,6 @@ function Navbar(props) {
           </div>
         );
     }
-    if(Auth.isAuthenticated()){
-        
-        return (
-          <div>
-            <ul>
-              <li>
-                <Link to="/login" onClick={e=>{Auth.logout()}}>Logout</Link>
-              </li>
-              <li>
-                <Link to="/stats">Protected Page</Link>
-              </li>
-            </ul>
-          </div>
-        );
-    }
     else{
         return (
             <div>
@@ -47,8 +51,8 @@ function Navbar(props) {
                   <Link to="/login">Login page</Link>
                 </li>
                 <li>
-                  <Link to="/stats">Protected Page</Link>
-                </li>
+                <Link to="/">Home Page</Link>
+              </li>
               </ul>
             </div>
           );

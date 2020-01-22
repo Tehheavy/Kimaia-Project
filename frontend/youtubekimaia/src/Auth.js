@@ -13,7 +13,8 @@ class Auth {
             let response = await axios.post('/users/login',data)
             if(response.status===200)
             {
-                if(response.data.type==="admin"){
+                if(response.data.admin===true){
+                    this.admin=true;
                     console.log("IS ADMIN");
                 }
                 this.email=data.email;
@@ -48,10 +49,14 @@ class Auth {
     }
     logout(cb){
         this.authenticated=false;
+        this.admin=false;
      //   cb();
     }
     isAuthenticated(){
         return this.authenticated;
+    }
+    isAdmin(){
+        return this.admin;
     }
     Authenticate(){
 

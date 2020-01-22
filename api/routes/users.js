@@ -93,6 +93,7 @@ router.post('/login',(req,res,next)=>{
                     Logger.logLogin(req.body.email);
                     return res.status(200).json({
                         message:'Auth successful',
+                        admin:user.admin,
                         token:token
                     })
                 }
