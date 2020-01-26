@@ -9,6 +9,7 @@ const youtube = google.youtube({ version: 'v3', auth: process.env.API_KEY });
 const dateTime = require('date-time');
 const Stat = require ('../models/stat')
 const Logger = require('../middleware/log')
+const dotenv = require('dotenv').config();
 
 router.post('/search',async (req,res,next)=>{
     console.log("searching")

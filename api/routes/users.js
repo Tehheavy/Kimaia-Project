@@ -7,6 +7,7 @@ const User = require('../models/user');
 const Stat = require('../models/stat')
 const Logger = require('../middleware/log')
 
+const dotenv = require('dotenv').config();
 
 router.post('/signup',(req,res,next)=>{
     User.find({email: req.body.email}).exec().then(user=>{

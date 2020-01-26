@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const Stat = require('../models/stat')
 const Logger = require('../middleware/log')
+const dotenv = require('dotenv').config();
 
 router.get('/',(req,res,next)=>{
     Stat.find({}).select('email action searchTitle video videoTime time').exec().then(stats=>{

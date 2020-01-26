@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const morgan= require('morgan');
 const path = require('path');
+const dotenv = require('dotenv').config();
 const mongoose = require('mongoose');
 
 const userRoutes = require('./api/routes/users');
