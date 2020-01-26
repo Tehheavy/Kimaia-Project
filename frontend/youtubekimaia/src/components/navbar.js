@@ -7,12 +7,13 @@ import {
     withRouter  
   } from 'react-router-dom'
   import Auth from '../Auth'
+  import './navbar.css'
 
 function Navbar(props) {
     if(Auth.isAdmin()){
         
         return (
-          <div>
+          <div className="Navbar">
             <ul>
               <li>
                 <Link to="/login" onClick={e=>{Auth.logout()}}>Logout</Link>
@@ -31,7 +32,7 @@ function Navbar(props) {
     if(Auth.isAuthenticated()){
         
         return (
-          <div>
+          <div className="Navbar">
             <ul>
               <li>
                 <Link to="/login" onClick={e=>{Auth.logout()}}>Logout</Link>
@@ -45,7 +46,7 @@ function Navbar(props) {
     }
     else{
         return (
-            <div>
+            <div className="Navbar">
               <ul>
                 <li>
                   <Link to="/login">Login page</Link>

@@ -3,7 +3,9 @@ import { MDBDataTable } from 'mdbreact';
 import ApiCalls from '../ApiCalls'
 import axios from 'axios';
 import Navbar from '../components/navbar'
-
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
 
 function Stats(props) {
   const [logs, setLogs] = useState([]);// Search bar value
@@ -61,12 +63,14 @@ function Stats(props) {
   return (
     <div>
         <Navbar type={"admin"}></Navbar>
-      <MDBDataTable
-        striped
-        bordered
-        small
-        data={data}
-      />
+        <Container style={{maxWidth:"90%"}}>
+            <MDBDataTable
+              striped
+              bordered
+              small
+              data={data}
+            />
+        </Container>
     </div>
   );
 }

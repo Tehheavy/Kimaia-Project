@@ -14,6 +14,7 @@ import Auth from './Auth'
 import Signup from './pages/Signup'
 import './App.css'
 import Navbar from './components/navbar'
+import Footer from './components/footer'
 
 console.log( Auth.isAuthenticated())
 const AuthenticatedRoute = ({component:Component,...rest})=>(
@@ -48,6 +49,8 @@ function App() {
           <AuthenticatedRoute exact path='/' component={Youtube}/>
           <ProtectedRoute exact path='/stats' component={Stats}/>
       </div>
+      <div><Footer></Footer>
+        </div>
     </Router>
   );
 }
