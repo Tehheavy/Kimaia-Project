@@ -17,7 +17,7 @@ import ReactPlayer from 'react-player'
 function Youtube(props) {
   const [search, setSearch] = useState("");// Search bar value
   const [videos,setVideos] = useState([]);//list of videos found by search
-  const [targetVideo,setTargetVideo]=useState("43kQ-344AnQ")//shown video ,default=kimaia video
+  const [targetVideo,setTargetVideo]=useState(["43kQ-344AnQ","Kimaia"])//shown video ,default=kimaia video
   const opts = { // youtube embedded res
     height: '600px',
     width: '100%',
@@ -30,7 +30,7 @@ function Youtube(props) {
   };
   const handleVideoListClick = (value)=>{
       setTargetVideo(value);
-      let data={email:Auth.GetEmail(),action:'select',videoId:value};
+      let data={email:Auth.GetEmail(),action:'select',videoId:value[0]};
       ApiCalls.userSelectLog(data);
   }
   const handlePress = event => {// handles Search request to get video list
@@ -41,7 +41,7 @@ function Youtube(props) {
   };
   const handleVideoLog=(event,action)=>{ // handles video interactions for Logs email,action,videoTime,videoId
     let email = Auth.GetEmail();
-    let videoId = targetVideo;
+    let videoId = targetVideo[0];
     let videoTime=event.target.getCurrentTime()
     let data={email,action,videoTime,videoId}
 
@@ -60,7 +60,7 @@ function Youtube(props) {
           <Col  xs={{ span: 12, order: 1 }} md={{ span: 8, order: 2 }}>
               <div className="YoutubePlayer">
                 <YouTube
-                        videoId={targetVideo}
+                        videoId={targetVideo[0]}
                         opts={opts}
                         onReady={e=>{handleVideoLog(e,"ready")}}                     // defaults -> noop
                         onPlay={e=>{handleVideoLog(e,"play")}}                        // defaults -> noop
@@ -68,6 +68,7 @@ function Youtube(props) {
                         onEnd={e=>{handleVideoLog(e,"end")}}                      // defaults -> noop
                         onError={e=>{handleVideoLog(e,"error")}}                    // defaults -> noop           // defaults -> noop
                     />
+                  <div> Now playing: {targetVideo[1]}</div>
 
               </div>
           </Col>

@@ -15,6 +15,11 @@ function Stats(props) {
       async function fetchData() {
         // You can await here
         const response = await axios.get('/log')
+        const temp=response.data.data.map(x=>{
+          const newDate=new Date(x.time);
+          x.time=newDate.toLocaleDateString()+" "+newDate.toLocaleTimeString()
+          return x;
+        })
         const data = {
       columns: [
         {
@@ -54,7 +59,7 @@ function Stats(props) {
           width: 100
         }
       ],
-      rows: response.data.data
+      rows: temp
     };
     setData(data)
       }
@@ -63,14 +68,14 @@ function Stats(props) {
   return (
     <div>
         <Navbar type={"admin"}></Navbar>
-        <Container style={{maxWidth:"90%"}}>
-            <MDBDataTable
-              striped
-              bordered
-              small
-              data={data}
-            />
-        </Container>
+      <Container style={{maxWidth:"90%"}}>
+      <MDBDataTable
+        striped
+        bordered
+        small
+        data={data}
+      />
+      </Container>
     </div>
   );
 }

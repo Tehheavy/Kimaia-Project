@@ -11,7 +11,7 @@ import Play from "../../../images/playButton.png"
 function VideoListItem(props) {
 
   return (
-    <div className="VideoListItem" onClick={e => props.handleVideoListClick(props.data.id)}>
+    <div className="VideoListItem" onClick={e => props.handleVideoListClick([props.data.id,props.data.snippet.title])}>
       <div className="VideoListItemImage">
         <img
           src={props.data.snippet.thumbnails.default.url}
